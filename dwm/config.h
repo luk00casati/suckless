@@ -22,6 +22,8 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -62,6 +64,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-c", "-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+#include "shift-tools.c"
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = dmenucmd } },
@@ -74,11 +78,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Left,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_Right,      setmfact,       {.f = +0.05} },
 //	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_period,    view,           {0} },
+	{ MODKEY,                       XK_period, shiftviewclients,    { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period,	shiftview,         { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,	shiftview,         { .i = -1 } },
+	{ MODKEY,	                XK_comma, shiftviewclients,    { .i = -1 } },
+//	{ MODKEY,                       XK_period,    view,           {0} },
 	{ MODKEY,                       XK_p,      killclient,     {0} },
 //	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 //	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 //	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+//	{ MODKEY,                       XK_n,      togglealttag,   {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_l,      togglefullscr,  {0} },
