@@ -16,7 +16,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/sh";
+static char *shell = "/bin/zsh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -60,7 +60,7 @@ static double maxlatency = 33;
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-static unsigned int blinktimeout = 800;
+static unsigned int blinktimeout = 0;
 
 /*
  * thickness of underline and bar cursors
@@ -71,7 +71,7 @@ static unsigned int cursorthickness = 2;
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
-static int bellvolume = 0;
+static int bellvolume = 50;
 
 /* default TERM value */
 char *termname = "st-256color";
@@ -168,16 +168,16 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
-	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
-	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+//	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+//	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+//	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+//	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
+//	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
+#define MODKEY Mod4Mask
+//#define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -185,16 +185,17 @@ static Shortcut shortcuts[] = {
 //	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 //	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 //	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_KP_Add,      zoom,           {.f = +1} },
-	{ TERMMOD,              XK_KP_Subtract, zoom,           {.f = -1} },
-	{ TERMMOD,              XK_KP_Multiply, zoomreset,      {.f =  0} },
-	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_KP_Add,      zoom,           {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_KP_Subtract, zoom,           {.f = -1} },
+	{ MODKEY|ShiftMask,     XK_KP_Multiply, zoomreset,      {.f =  0} },
+	{ ControlMask|ShiftMask,XK_C,           clipcopy,       {.i =  0} },
+	{ ControlMask|ShiftMask,XK_V,           clippaste,      {.i =  0} },
 //	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 //	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 //	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ControlMask,          XK_KP_Subtract, kscrollup,      {.i =  3} },
-	{ ControlMask,          XK_KP_Add,      kscrolldown,    {.i =  3} },
+	{ MODKEY,               XK_KP_Subtract, kscrollup,      {.i =  3} },
+	{ MODKEY,               XK_KP_Add,      kscrolldown,    {.i =  3} },
+	{ MODKEY,               XK_KP_Multiply, kscrollreset,   {.i =  0} },
 };
 
 /*

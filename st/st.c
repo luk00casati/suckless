@@ -1117,6 +1117,23 @@ kscrolldown(const Arg *a)
 }
 
 void
+kscrollreset(const Arg *a)
+{
+
+	int n = a->i;
+
+	if (IS_SET(MODE_ALTSCREEN))
+		return;
+
+	if (n < 0) n = (-n) * term.row;
+	if (n > TSCREEN.off) n = TSCREEN.off;
+	TSCREEN.off *= n;
+	selscroll(0, n);
+	tfulldirt();
+
+}
+
+void
 tscrolldown(int orig, int n)
 {
 	int i;

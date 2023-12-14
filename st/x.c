@@ -61,6 +61,7 @@ static void zoomreset(const Arg *);
 static void ttysend(const Arg *);
 void kscrollup(const Arg *);
 void kscrolldown(const Arg *);
+void kscrollreset(const Arg *);
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
