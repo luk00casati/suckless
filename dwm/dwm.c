@@ -164,14 +164,14 @@ static Monitor *createmon(void);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
 static void detachstack(Client *c);
-static Monitor *dirtomon(int dir);
+//static Monitor *dirtomon(int dir);
 static void drawbar(Monitor *m);
 static void drawbars(void);
 static void enternotify(XEvent *e);
 static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
-static void focusmon(const Arg *arg);
+//static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -190,7 +190,7 @@ static void maprequest(XEvent *e);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
-static void pop(Client *c);
+//static void pop(Client *c);
 static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
@@ -205,7 +205,7 @@ static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
-static void setgaps(const Arg *arg);
+//static void setgaps(const Arg *arg);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
@@ -213,10 +213,10 @@ static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
-static void tagmon(const Arg *arg);
+//static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglealttag(const Arg *arg);
-static void togglebar(const Arg *arg);
+//static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 //static void toggleallowkill(const Arg *arg);
 static void togglefullscr(const Arg *arg);
@@ -241,7 +241,7 @@ static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
-static void zoom(const Arg *arg);
+//static void zoom(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
@@ -692,7 +692,7 @@ detachstack(Client *c)
 		c->mon->sel = t;
 	}
 }
-
+/*
 Monitor *
 dirtomon(int dir)
 {
@@ -707,7 +707,7 @@ dirtomon(int dir)
 		for (m = mons; m->next != selmon; m = m->next);
 	return m;
 }
-
+*/
 void
 drawbar(Monitor *m)
 {
@@ -834,7 +834,7 @@ focusin(XEvent *e)
 	if (selmon->sel && ev->window != selmon->sel->win)
 		setfocus(selmon->sel);
 }
-
+/*
 void
 focusmon(const Arg *arg)
 {
@@ -848,7 +848,7 @@ focusmon(const Arg *arg)
 	selmon = m;
 	focus(NULL);
 }
-
+*/
 void
 focusstack(const Arg *arg)
 {
@@ -1243,7 +1243,7 @@ nexttiled(Client *c)
 	for (; c && (c->isfloating || !ISVISIBLE(c)); c = c->next);
 	return c;
 }
-
+/*
 void
 pop(Client *c)
 {
@@ -1252,7 +1252,7 @@ pop(Client *c)
 	focus(c);
 	arrange(c->mon);
 }
-
+*/
 void
 propertynotify(XEvent *e)
 {
@@ -1541,7 +1541,7 @@ setfullscreen(Client *c, int fullscreen)
 		arrange(c->mon);
 	}
 }
-
+/*
 void
 setgaps(const Arg *arg)
 {
@@ -1551,7 +1551,7 @@ setgaps(const Arg *arg)
 		selmon->gappx += arg->i;
 	arrange(selmon);
 }
-
+*/
 void
 setlayout(const Arg *arg)
 {
@@ -1720,7 +1720,7 @@ tag(const Arg *arg)
 		arrange(selmon);
 	}
 }
-
+/*
 void
 tagmon(const Arg *arg)
 {
@@ -1728,7 +1728,7 @@ tagmon(const Arg *arg)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
-
+*/
 void
 tile(Monitor *m)
 {
@@ -1763,7 +1763,7 @@ togglealttag(const Arg *arg)
 	selmon->alttag = !selmon->alttag;
 	drawbar(selmon);
 }
-
+/*
 void
 togglebar(const Arg *arg)
 {
@@ -1772,7 +1772,7 @@ togglebar(const Arg *arg)
 	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
 	arrange(selmon);
 }
-
+*/
 void
 toggleallowkill(const Arg *arg)
 {
@@ -2193,7 +2193,7 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
 	die("dwm: another window manager is already running");
 	return -1;
 }
-
+/*
 void
 zoom(const Arg *arg)
 {
@@ -2205,7 +2205,7 @@ zoom(const Arg *arg)
 		return;
 	pop(c);
 }
-
+*/
 int
 main(int argc, char *argv[])
 {
