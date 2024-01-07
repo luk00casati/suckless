@@ -72,5 +72,5 @@ static const struct arg args[] = {
 	//{ vol_perc, "[VOL %s%%]|", NULL             },
 	{ run_command, " VOL %s |", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" }, //volume
 	{ run_command, " BAT %s |", "acpi | cut -c12-"}, //battery
-	{ datetime, "%s",               "  %H:%M  " },
+	{ datetime, "%s",               "  %d/%m/%y %H:%M  |" },
 };
