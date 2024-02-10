@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */ 
-static const unsigned int gappx     = 10;       /* gaps between windows */
+static const unsigned int gappx     = 0;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int showtitle          = 0;        /* 0 means no title */
@@ -18,7 +18,7 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#C28D4B";   // "#005577"; default blue
+static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -36,7 +36,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask   allowkill    isfloating   monitor */
-//	{ "Gimp",     NULL,       NULL,          0,           1,           1,           -1 },
 	{ "Brave",    NULL,       NULL,         1 << 8,       0,           0,           -1 } 
 };
 
@@ -80,12 +79,12 @@ static const Key keys[] = {
 	{ MODKEY,        		XK_s,	   spawn,	   {.v = flamescreencmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn, 	   {.v = flameguicmd } },
 //	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_Down,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Up,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_m,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_n,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_Left,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_Right,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+//	{ MODKEY,                       XK_m,      incnmaster,     {.i = +1 } },
+//	{ MODKEY,                       XK_n,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 //	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_period, shiftviewclients,    { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_period,	shiftview,         { .i = +1 } },
@@ -99,9 +98,9 @@ static const Key keys[] = {
 //	{ MODKEY,                       XK_n,      togglealttag,   {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,             XK_l,      togglefullscr,  {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,             		XK_f,      togglefullscr,  {0} },
+//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 //	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 //	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 //	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },

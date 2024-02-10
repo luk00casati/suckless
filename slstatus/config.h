@@ -70,6 +70,7 @@ static const struct arg args[] = {
 	{ ram_perc, " RAM %s%% |", NULL	      },
 	//{ battery_perc,  "[BAT %s%%]|", NULL       },
 	//{ vol_perc, "[VOL %s%%]|", NULL             },
+	{ disk_perc, " DISK %s%% |", NULL		}, 
 	{ run_command, " VOL %s |", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" }, //volume
 	{ run_command, " BAT %s |", "acpi | cut -c12-"}, //battery
 	{ datetime, "%s",               "  %d/%m/%y %H:%M  |" },

@@ -189,8 +189,9 @@ static MouseShortcut mshortcuts[] = {
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
-	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 //	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
+//	{ ControlMask,         XK_Ograve,      sendescape,     {.i =  0} },
+	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 //	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 //	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_KP_Add,      zoom,           {.f = +1} },
@@ -245,6 +246,7 @@ static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
  */
 static Key key[] = {
 	/* keysym           mask            string      appkey appcursor */
+//	{ XK_ograve,        ControlMask,    "\03327",    0,    0}, //custom
 	{ XK_KP_Home,       ShiftMask,      "\033[2J",       0,   -1},
 	{ XK_KP_Home,       ShiftMask,      "\033[1;2H",     0,   +1},
 	{ XK_KP_Home,       XK_ANY_MOD,     "\033[H",        0,   -1},
