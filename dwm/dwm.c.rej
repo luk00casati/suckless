@@ -1,11 +1,24 @@
 --- dwm.c
 +++ dwm.c
-@@ -92,7 +92,7 @@ struct Client {
- 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
- 	int bw, oldbw;
- 	unsigned int tags;
--	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, needresize;
- 	Client *next;
- 	Client *snext;
- 	Monitor *mon;
+@@ -210,7 +208,6 @@ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
+ static void tile(Monitor *);
+-static void togglealttag(const Arg *arg);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
+ static void toggletag(const Arg *arg);
+@@ -1695,13 +1671,6 @@ tile(Monitor *m)
+ 		}
+ }
+ 
+-void
+-togglealttag(const Arg *arg)
+-{
+-	selmon->alttag = !selmon->alttag;
+-	drawbar(selmon);
+-}
+-
+ void
+ togglebar(const Arg *arg)
+ {

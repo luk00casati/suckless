@@ -27,7 +27,6 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; // " " };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const Rule rules[] = {
@@ -36,7 +35,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask   allowkill    isfloating   monitor */
-	{ "Brave",    NULL,       NULL,         1 << 8,       0,           0,           -1 } 
+	{ "Brave",    NULL,       NULL,         1 << 8,       0,           0,           -1 }, 
+    { "Github-desktop", NULL, NULL,         1 << 2,       1,           0,           -1 }
 };
 
 /* layout(s) */
@@ -95,7 +95,6 @@ static const Key keys[] = {
 //	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 //	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 //	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-//	{ MODKEY,                       XK_n,      togglealttag,   {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,             		XK_f,      togglefullscr,  {0} },
